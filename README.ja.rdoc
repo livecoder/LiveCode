@@ -2,3 +2,10 @@
 ====
 
 このレポジトリは livecoder さんの livecoding を見世物にするために用意されています。
+
+
+場所
+----
+
+http://github.com/livecoder/LiveCode
+

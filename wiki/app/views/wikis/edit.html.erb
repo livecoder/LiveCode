@@ -1,0 +1,20 @@
+<h1>Editing wiki</h1>
+
+<% form_for(@wiki) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :data %><br />
+    <%= f.text_area :data %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @wiki %> |
+<%= link_to 'Back', wikis_path %>
