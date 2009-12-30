@@ -1,0 +1,8 @@
+=link_to "記事を執筆する", new_article_path
+-@articles.each do |article|
+  %h2=link_to article.title, article
+  %p=truncate article.html, :length => 20
+  -#
+    %h3 haml
+    =article.to_haml
+  -#=article.body

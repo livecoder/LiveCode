@@ -1,0 +1,15 @@
+!!! XML
+!!!
+%html
+  %head
+    %title CMS
+    =javascript_include_tag "text-hatena0-2.js"
+    =stylesheet_link_tag "base.css"
+  %body
+    .container
+      #header
+        =link_to "ホーム", root_path
+        %h1 CMS
+      #content
+        =yield
+

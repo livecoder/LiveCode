@@ -1,0 +1,47 @@
+-# this is http://noch.dip.jp/article/new
+%h2 記事を執筆する
+-# see http://tech.nitoyon.com/javascript/application/texthatena/wordpro/
+.form
+  -form_for @article do |f|
+    :javascript
+      window.onload = function() {
+        edit = document.getElementById("article_body");
+        preview = document.getElementById("preview")
+        edit.onkeyup = function() {convert()};
+
+        hatena = new Hatena({sectionanchor : "OO"});
+      }
+
+      function convert() {
+        if (edit == null || preview == null) return;
+
+        var wiki = String._unescapeHTML(edit.value);
+        hatena.parse(wiki);
+        preview.innerHTML = hatena.html();
+      }
+    .left-right
+      .left{:style => "width: 50%;"}
+        %label{:for => "article[title]"}
+          タイトル
+        %br
+        =f.text_field :title
+        %br
+
+        %label{:for => "article[body]"}
+          内容
+        %br
+        =f.text_area :body
+        %br
+        -# エラー時のメッセージ
+        .flash
+          -flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p=message
+
+        =f.submit "保存する"
+      .right{:style => "width: 50%;"}
+        #preview
+      .clear
+
+
+
